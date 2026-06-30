@@ -14,7 +14,16 @@ const FeedbackSchema = new mongoose.Schema(
       max: 5,
     },
 
-    image: String,
+    image: {
+      url: {
+        type: String,
+        required: true,
+      },
+      public_id: {
+        type: String,
+        required: true,
+      },
+    },
 
     name: {
       type: String,

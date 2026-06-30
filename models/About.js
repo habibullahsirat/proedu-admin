@@ -2,7 +2,16 @@ import mongoose from "mongoose";
 
 const AboutSchema = new mongoose.Schema(
   {
-    image: String,
+    image: {
+      url: {
+        type: String,
+        required: true,
+      },
+      public_id: {
+        type: String,
+        required: true,
+      },
+    },
 
     title: {
       type: String,
