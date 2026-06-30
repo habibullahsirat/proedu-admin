@@ -1,5 +1,3 @@
-import { z } from "zod";
-
 export const instructorSchema = z.object({
   image: z.object({
     url: z.string().url(),
@@ -14,3 +12,5 @@ export const instructorSchema = z.object({
 
   details: z.string().min(20),
 });
+
+export const updateInstructorSchema = instructorSchema.partial();
