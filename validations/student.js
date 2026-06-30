@@ -12,3 +12,5 @@ export const studentSchema = z.object({
 
   department: z.string().min(2),
 });
+
+export const updateStudentSchema = studentSchema.partial();

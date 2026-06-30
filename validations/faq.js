@@ -5,3 +5,5 @@ export const faqSchema = z.object({
 
   answer: z.string().min(5),
 });
+
+export const updateFAQSchema = faqSchema.partial();

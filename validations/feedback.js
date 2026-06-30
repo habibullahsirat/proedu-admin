@@ -14,3 +14,5 @@ export const feedbackSchema = z.object({
 
   department: z.string().min(2),
 });
+
+export const updateFeedbackSchema = feedbackSchema.partial();

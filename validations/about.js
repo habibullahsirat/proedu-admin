@@ -12,3 +12,5 @@ export const aboutSchema = z.object({
 
   buttonText: z.string().min(2),
 });
+
+export const updateAboutSchema = aboutSchema.partial();

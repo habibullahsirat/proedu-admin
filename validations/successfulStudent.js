@@ -10,3 +10,5 @@ export const successfulStudentSchema = z.object({
 
   department: z.string().min(2),
 });
+
+export const updateSuccessfulStudentSchema = successfulStudentSchema.partial();
