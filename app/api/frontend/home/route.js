@@ -4,6 +4,7 @@ import { success, error } from "@/lib/apiResponse";
 import Hero from "@/models/Hero";
 import About from "@/models/About";
 import Course from "@/models/Course";
+import Instructor from "@/models/Instructor";
 import SuccessfulStudent from "@/models/SuccessfulStudent";
 import Feedback from "@/models/Feedback";
 import FAQ from "@/models/FAQ";
@@ -13,26 +14,59 @@ export async function GET() {
   try {
     await connectDB();
 
-    const [hero, about, courses, successfulStudents, feedback, faq, companies] =
-      await Promise.all([
-        Hero.findOne({ isActive: true }),
+    const [
+      hero,
+      aboutDoc,
+      courses,
+      successfulStudents,
+      feedback,
+      faq,
+      companies,
+      totalCourses,
+      totalExperts,
+      totalReviews,
+    ] = await Promise.all([
+      Hero.findOne({ isActive: true }),
 
-        About.findOne({ isActive: true }),
+      About.findOne({ isActive: true }),
 
-        Course.find().sort({
-          createdAt: -1,
-        }),
+      Course.find().sort({
+        createdAt: -1,
+      }),
 
-        SuccessfulStudent.find(),
+      SuccessfulStudent.find(),
 
-        Feedback.find(),
+      Feedback.find(),
 
-        FAQ.find(),
+      FAQ.find(),
 
-        Company.find({
-          isActive: true,
-        }),
-      ]);
+      Company.find({
+        isActive: true,
+      }),
+
+      Course.countDocuments(),
+
+      Instructor.countDocuments(),
+
+      Feedback.countDocuments(),
+    ]);
+
+    // Sum of all ratings
+    const totalRatings = feedback.reduce((sum, item) => sum + item.rating, 0);
+
+    const about = aboutDoc
+      ? {
+          ...aboutDoc.toObject(),
+
+          totalCourses,
+
+          totalExperts,
+
+          totalRatings,
+
+          totalReviews,
+        }
+      : null;
 
     return success({
       hero,
@@ -49,3 +83,12 @@ export async function GET() {
     return error(err.message);
   }
 }
+
+// import { NextResponse } from "next/server";
+
+// export async function GET() {
+//   return NextResponse.json({
+//     success: true,
+//     message: "Frontend Home API is working",
+//   });
+// }
