@@ -1,20 +1,20 @@
-import Hero from "@/models/Hero";
+import About from "@/models/About";
 
 import { getDocuments } from "@/lib/crud/getDocuments";
 import { createDocument } from "@/lib/crud/createDocument";
 
-import { heroSchema } from "@/validations/hero";
+import { createAboutSchema } from "@/validations/about";
 
 export async function GET() {
-  return getDocuments(Hero);
+  return getDocuments(About);
 }
 
 // export async function POST(request) {
-//   return createDocument(request, Hero, heroSchema);
+//   return createDocument(request, About, createAboutSchema);
 // }
 
 export async function POST(request) {
-  return createDocument(request, Hero, createHeroSchema, "image", {
+  return createDocument(request, About, createAboutSchema, "image", {
     activeField: "isActive",
   });
 }
