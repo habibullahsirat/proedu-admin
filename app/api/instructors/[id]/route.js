@@ -1,19 +1,19 @@
-import Course from "@/models/Course";
+import Instructor from "@/models/Instructor";
 
 import { getDocument } from "@/lib/crud/getDocument";
 import { updateDocument } from "@/lib/crud/updateDocument";
 import { deleteDocument } from "@/lib/crud/deleteDocument";
 
-import { updateCourseSchema } from "@/validations/course";
+import { updateInstructorSchema } from "@/validations/instructor";
 
 export async function GET(request, { params }) {
-  return getDocument(Course, params.id);
+  return getDocument(Instructor, params.id);
 }
 
 export async function PATCH(request, { params }) {
-  return updateDocument(request, Course, updateCourseSchema, params.id);
+  return updateDocument(request, Instructor, updateInstructorSchema, params.id);
 }
 
 export async function DELETE(request, { params }) {
-  return deleteDocument(Course, params.id);
+  return deleteDocument(Instructor, params.id);
 }
