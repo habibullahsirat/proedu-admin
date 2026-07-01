@@ -16,16 +16,24 @@ const HeroSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
+      trim: true,
     },
 
     description: {
       type: String,
       required: true,
+      trim: true,
     },
 
     buttonText: {
       type: String,
       required: true,
+      trim: true,
+    },
+
+    isActive: {
+      type: Boolean,
+      default: false,
     },
   },
   {
