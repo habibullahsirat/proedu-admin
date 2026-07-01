@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const courseSchema = z.object({
+export const createCourseSchema = z.object({
   image: z.object({
     url: z.string().url(),
     public_id: z.string(),
@@ -13,4 +13,4 @@ export const courseSchema = z.object({
   price: z.number().positive(),
 });
 
-export const updateCourseSchema = courseSchema.partial();
+export const updateCourseSchema = createCourseSchema.partial();

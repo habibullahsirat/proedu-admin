@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const instructorSchema = z.object({
+export const createInstructorSchema = z.object({
   image: z.object({
     url: z.string().url(),
     public_id: z.string(),
@@ -15,4 +15,4 @@ export const instructorSchema = z.object({
   details: z.string().min(20),
 });
 
-export const updateInstructorSchema = instructorSchema.partial();
+export const updateInstructorSchema = createInstructorSchema.partial();
