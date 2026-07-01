@@ -7,13 +7,17 @@ import { deleteDocument } from "@/lib/crud/deleteDocument";
 import { updateInstructorSchema } from "@/validations/instructor";
 
 export async function GET(request, { params }) {
-  return getDocument(Instructor, params.id);
+  const { id } = await params;
+
+  return getDocument(Course, id);
 }
 
 export async function PATCH(request, { params }) {
-  return updateDocument(request, Instructor, updateInstructorSchema, params.id);
+  const { id } = await params;
+  return updateDocument(request, Instructor, updateInstructorSchema, id);
 }
 
 export async function DELETE(request, { params }) {
-  return deleteDocument(Instructor, params.id);
+  const { id } = await params;
+  return deleteDocument(Instructor, id);
 }

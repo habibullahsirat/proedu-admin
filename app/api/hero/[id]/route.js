@@ -7,7 +7,9 @@ import { deleteDocument } from "@/lib/crud/deleteDocument";
 import { updateHeroSchema } from "@/validations/hero";
 
 export async function GET(request, { params }) {
-  return getDocument(Hero, params.id);
+  const { id } = await params;
+
+  return getDocument(Course, id);
 }
 
 export async function PATCH(request, { params }) {
