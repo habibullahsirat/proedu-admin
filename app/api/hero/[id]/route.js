@@ -1,21 +1,19 @@
 import Hero from "@/models/Hero";
 
 import { getDocument } from "@/lib/crud/getDocument";
-
 import { updateDocument } from "@/lib/crud/updateDocument";
-
 import { deleteDocument } from "@/lib/crud/deleteDocument";
 
-import { heroSchema } from "@/validations/hero";
+import { updateHeroSchema } from "@/validations/hero";
 
-export async function GET(req, { params }) {
+export async function GET(request, { params }) {
   return getDocument(Hero, params.id);
 }
 
-export async function PATCH(req, { params }) {
-  return updateDocument(req, Hero, heroSchema, params.id);
+export async function PATCH(request, { params }) {
+  return updateDocument(request, Hero, updateHeroSchema, params.id);
 }
 
-export async function DELETE(req, { params }) {
+export async function DELETE(request, { params }) {
   return deleteDocument(Hero, params.id);
 }
