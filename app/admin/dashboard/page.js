@@ -1,9 +1,15 @@
+import DashboardStats from "@/components/admin/dashboard/DashboardStats";
+
 export default function DashboardPage() {
   return (
-    <div>
-      <h2 className="text-3xl font-bold">Dashboard</h2>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold">Dashboard</h1>
 
-      <p className="mt-2 text-gray-500">Welcome to the ProEdu Admin Panel.</p>
+        <p className="text-gray-500 mt-2">Welcome to ProEdu Admin.</p>
+      </div>
+
+      <DashboardStats />
     </div>
   );
 }
