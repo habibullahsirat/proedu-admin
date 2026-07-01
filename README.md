@@ -23,3 +23,7 @@ project-root
 ├── public
 ├── package.json
 └── .env.local
+
+## Generate JWT Secret
+
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
