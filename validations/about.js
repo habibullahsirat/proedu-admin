@@ -1,16 +1,20 @@
 import { z } from "zod";
 
-export const aboutSchema = z.object({
-  image: z.object({
-    url: z.string().url(),
-    public_id: z.string(),
-  }),
-
-  title: z.string().min(3),
-
-  description: z.string().min(20),
-
-  buttonText: z.string().min(2),
+const imageSchema = z.object({
+  url: z.string().url(),
+  public_id: z.string().min(1),
 });
 
-export const updateAboutSchema = aboutSchema.partial();
+export const createAboutSchema = z.object({
+  image: imageSchema,
+
+  title: z.string().min(2),
+
+  description: z.string().min(10),
+
+  buttonText: z.string().min(1),
+
+  isActive: z.boolean().optional(),
+});
+
+export const updateAboutSchema = createAboutSchema.partial();

@@ -1,12 +1,16 @@
 import { z } from "zod";
 
-export const companySchema = z.object({
-  logo: z.object({
-    url: z.string().url(),
-    public_id: z.string(),
-  }),
-
-  name: z.string().min(2),
+const logoSchema = z.object({
+  url: z.string().url(),
+  public_id: z.string().min(1),
 });
 
-export const updateCompanySchema = companySchema.partial();
+export const createCompanySchema = z.object({
+  logo: logoSchema,
+
+  name: z.string().min(2),
+
+  isActive: z.boolean().optional(),
+});
+
+export const updateCompanySchema = createCompanySchema.partial();
