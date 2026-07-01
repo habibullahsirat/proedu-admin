@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export const instructorSchema = z.object({
   image: z.object({
     url: z.string().url(),
