@@ -9,7 +9,7 @@ import { updateInstructorSchema } from "@/validations/instructor";
 export async function GET(request, { params }) {
   const { id } = await params;
 
-  return getDocument(Course, id);
+  return getDocument(Instructor, id);
 }
 
 export async function PATCH(request, { params }) {

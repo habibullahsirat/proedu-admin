@@ -9,7 +9,7 @@ import { updateHeroSchema } from "@/validations/hero";
 export async function GET(request, { params }) {
   const { id } = await params;
 
-  return getDocument(Course, id);
+  return getDocument(Hero, id);
 }
 
 export async function PATCH(request, { params }) {
