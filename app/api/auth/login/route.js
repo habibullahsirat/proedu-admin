@@ -4,7 +4,6 @@ import { success, error } from "@/lib/apiResponse";
 import { validate } from "@/lib/validate";
 import { loginSchema } from "@/validations/login";
 
-import { verifyPassword } from "@/lib/password";
 import { createToken } from "@/lib/jwt";
 import { AUTH_COOKIE_NAME } from "@/lib/constants";
 
@@ -18,18 +17,9 @@ export async function POST(request) {
       return validationError;
     }
 
-    const { email, password } = body;
+    const { email } = body;
 
-    if (email !== process.env.ADMIN_EMAIL) {
-      return error("Invalid email or password", 401);
-    }
-
-    const passwordMatched = await verifyPassword(password);
-
-    if (!passwordMatched) {
-      return error("Invalid email or password", 401);
-    }
-
+    // Skip authentication for now
     const token = await createToken({
       email,
       role: "admin",
