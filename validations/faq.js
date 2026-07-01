@@ -1,9 +1,9 @@
 import { z } from "zod";
 
-export const faqSchema = z.object({
+export const createFaqSchema = z.object({
   question: z.string().min(5),
 
   answer: z.string().min(5),
 });
 
-export const updateFAQSchema = faqSchema.partial();
+export const updateFaqSchema = createFaqSchema.partial();

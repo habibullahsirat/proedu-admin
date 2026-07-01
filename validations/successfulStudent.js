@@ -1,14 +1,17 @@
 import { z } from "zod";
 
-export const successfulStudentSchema = z.object({
-  image: z.object({
-    url: z.string().url(),
-    public_id: z.string(),
-  }),
+const imageSchema = z.object({
+  url: z.string().url(),
+  public_id: z.string().min(1),
+});
+
+export const createSuccessfulStudentSchema = z.object({
+  image: imageSchema,
 
   name: z.string().min(2),
 
   department: z.string().min(2),
 });
 
-export const updateSuccessfulStudentSchema = successfulStudentSchema.partial();
+export const updateSuccessfulStudentSchema =
+  createSuccessfulStudentSchema.partial();
