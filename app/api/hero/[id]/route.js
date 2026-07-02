@@ -13,9 +13,15 @@ export async function GET(request, { params }) {
 }
 
 export async function PATCH(request, { params }) {
-  return updateDocument(request, Hero, updateHeroSchema, params.id);
+  const { id } = await params;
+
+  return updateDocument(request, Hero, updateHeroSchema, id, "image", {
+    activeField: "isActive",
+  });
 }
 
 export async function DELETE(request, { params }) {
-  return deleteDocument(Hero, params.id);
+  const { id } = await params;
+
+  return deleteDocument(Hero, id, "image");
 }

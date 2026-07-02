@@ -1,7 +1,9 @@
-export default function EmptyState({ title = "No data found" }) {
+"use client";
+
+export default function EmptyState({ message = "No records found." }) {
   return (
-    <div className="rounded-lg border border-dashed p-10 text-center text-gray-500">
-      {title}
+    <div className="rounded-xl border bg-white py-16 text-center">
+      <h2 className="text-lg font-semibold">{message}</h2>
     </div>
   );
 }
