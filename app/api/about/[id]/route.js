@@ -23,5 +23,5 @@ export async function PATCH(request, { params }) {
 export async function DELETE(request, { params }) {
   const { id } = await params;
 
-  return deleteDocument(About, id);
+  return deleteDocument(About, id, "image");
 }
