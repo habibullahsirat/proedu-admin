@@ -13,9 +13,13 @@ export async function GET(request, { params }) {
 }
 
 export async function PATCH(request, { params }) {
-  return updateDocument(request, Course, updateCourseSchema, params.id);
+  const { id } = await params;
+
+  return updateDocument(request, Course, updateCourseSchema, id);
 }
 
 export async function DELETE(request, { params }) {
-  return deleteDocument(Course, params.id);
+  const { id } = await params;
+
+  return deleteDocument(Course, id);
 }

@@ -20,7 +20,7 @@ export default function ImageField({ value, onChange }) {
 
       const formData = new FormData();
 
-      formData.append("file", file);
+      formData.append("image", file);
 
       const { data } = await axios.post("/api/upload", formData);
 
@@ -44,6 +44,7 @@ export default function ImageField({ value, onChange }) {
           alt="Preview"
           width={280}
           height={180}
+          unoptimized
           className="rounded-lg border object-cover"
         />
       )}
